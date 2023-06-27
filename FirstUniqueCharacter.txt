@@ -1,0 +1,39 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class FirstUniqueChar {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		
+		int[] hash = new int[27];
+		
+		for(int i=0;i<hash.length;i++) {
+			hash[i] = Integer.MAX_VALUE;
+		}
+		
+		for(int i=0;i<str.length();i++) {
+			
+			if(hash[(int)str.charAt(i)-96]== Integer.MAX_VALUE) {
+				hash[(int)str.charAt(i)-96] = i;
+			}else {
+				hash[(int)str.charAt(i)-96] = Integer.MAX_VALUE;
+			}
+		}
+		
+		int min = hash[0];
+		
+		for(int i=1;i<hash.length;i++) {
+			if(hash[i]<min) {
+				min = hash[i];
+			}
+		}
+		
+		System.out.print(min);
+
+	}
+
+}
